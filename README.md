@@ -40,7 +40,7 @@ add the lines:
     ATTR{product}=="CanoScan",SYMLINK+="bus/usb/00%s{busnum}/NQBSCANNER%k"
     ATTR{product}=="EPSON Perfection V37/V370", SYMLINK+="bus/usb/00%s{busnum}/NQBSCANNER%k"
     
-## script takes care of creating symlinks for the epson scanners, so the below notes are simply fyi
+##script takes care of creating symlinks for the epson scanners, so the below notes are simply fyi
 
 udev intro for beginners:
 http://www.dreamincode.net/forums/topic/20020-using-udev-to-manage-hardware-in-linux/
@@ -69,7 +69,7 @@ key-values of interest: KERNEL and DEV#
 
 Scanner info is in /sys/bus/usb/devices/ folder 
 run goal: 'udevadm info -a -p /sys/bus/usb/devices/num1-num2'
-# num1-num2 == (KERNAL_value)-(???)
+#num1-num2 == (KERNAL_value)-(???)
     #* ??? != (PORT + 1) != DEV#
 
 run: 'usb-devices' and find devices whose Product == 'EPSON Perfection V37/V370'
