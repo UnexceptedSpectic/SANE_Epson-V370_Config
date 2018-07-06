@@ -1,15 +1,15 @@
 1) install sane. 
-'sudo apt-get update & sudo apt-get upgrade -y'  
-'sudo apt-get install sane sanue-utils libsane-extras'  
+    'sudo apt-get update & sudo apt-get upgrade -y'  
+    'sudo apt-get install sane sanue-utils libsane-extras'  
 
 2) install epkowa drivers to ensure epson v370 support in sane  
-#newest drivers  
-http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX  
-#confirmed working drivers  
-iscan_2.29.3-1~usb0.1.ltdl7_amd64.deb  
-iscan-data_1.26.0-1_all.deb  
-iscan-plugin-perfection-v370_1.0.0-2_amd64.deb  
-##download link: https://goo.gl/tsnu23  
+    #newest drivers  
+    http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX  
+    #confirmed working drivers  
+    iscan_2.29.3-1~usb0.1.ltdl7_amd64.deb  
+    iscan-data_1.26.0-1_all.deb  
+    iscan-plugin-perfection-v370_1.0.0-2_amd64.deb  
+    ##download link: https://goo.gl/tsnu23  
 
 install all .deb files with: 'dpgk -i ./*.deb'  
 if given dependency error, run for each driver:  
