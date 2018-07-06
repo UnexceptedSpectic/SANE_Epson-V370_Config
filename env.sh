@@ -2,11 +2,7 @@
 #script to set up environment for ScanLag
 
 sudo apt-get update & sudo apt-get upgrade -y
-sudo apt-get install sane sanue-utils libsane-extras git
-
-git clone https://github.com/UnexceptedSpectic/SANE_Epson-V370_Config.git
-
-cd SANE_Epson-V370_Config
+sudo apt-get install sane sanue-utils libsane-extras 
 
 tar -xyf 07062018_driver_bundle.deb.tar.gz
 
