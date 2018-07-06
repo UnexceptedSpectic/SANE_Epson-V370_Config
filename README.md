@@ -5,10 +5,11 @@
 2) install epkowa drivers to ensure epson v370 support in sane  
 #newest drivers  
 http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX  
-#confirmed working drivers  
+#confirmed working legacy drivers  
 iscan_2.29.3-1~usb0.1.ltdl7_amd64.deb  
 iscan-data_1.26.0-1_all.deb  
 iscan-plugin-perfection-v370_1.0.0-2_amd64.deb  
+
     #download link: https://goo.gl/tsnu23  
 
 install all .deb files with: 'dpgk -i ./*.deb'  
@@ -24,7 +25,7 @@ permissions issue - if 'sane-find-scanner' only runs when using sudo, follow gui
 4) add the driver to the list in /usr/local/etc/sane.d/dll.conf or /etc/sane.d/dll.conf: add the word 'epkowa' to the list  
 run: 'scanimage -L' ## may require reboot  
 
-#common issues/fixes; try rerunning 'scanimage -L' and rebooting between each fix:  
+*common issues/fixes; try rerunning 'scanimage -L' and rebooting between each fix:  
 
 -run: 'export SANE_DEBUG_DLL="128 scanimage -L"' and then 'scanimage -L' for verbose output showing which drivers sane is trying to load. Locate the output line where sane searches for epkowa. If it is unable to find/initialize its drivers, note the DIRECTORY in which it searches for them and create sym link to them using 'sudo ln -s TARGET SYMLINK', where TARGET == /usr/lib/sane/DRIVER and SYMLINK is DIRECTORY/DRIVER  
 #if installed drivers are not located in TARGET, run: 'sudo find / -iname '*libsane-epkowa*''  
@@ -40,7 +41,7 @@ add the lines:
     ATTR{product}=="CanoScan",SYMLINK+="bus/usb/00%s{busnum}/NQBSCANNER%k"  
     ATTR{product}=="EPSON Perfection V37/V370", SYMLINK+="bus/usb/00%s{busnum}/NQBSCANNER%k"  
     
-##script takes care of creating symlinks for the epson scanners, so the below notes are simply fyi  
+    #script takes care of creating symlinks for the epson scanners, so the below notes are simply fyi  
 
 udev intro for beginners:  
 http://www.dreamincode.net/forums/topic/20020-using-udev-to-manage-hardware-in-linux/  
