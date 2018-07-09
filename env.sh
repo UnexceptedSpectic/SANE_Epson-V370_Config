@@ -1,8 +1,8 @@
 #!/bin/sh
-#script to set up environment for ScanLag
+#script to set up environment for sane and epson v370
 
 sudo apt-get update & sudo apt-get upgrade -y
-sudo apt-get install sane sanue-utils libsane-extras 
+sudo apt-get install sane sanue-utils libsane-extras git
 
 tar -xyf 07062018_driver_bundle.deb.tar.gz
 
