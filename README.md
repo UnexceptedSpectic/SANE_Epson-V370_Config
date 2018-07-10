@@ -1,6 +1,6 @@
 1) install sane.  
 'sudo apt-get update & sudo apt-get upgrade -y'  
-'sudo apt-get install sane sanue-utils libsane-extras'  
+'sudo apt-get install sane sane-utils libsane-extras'  
 
 2) install epkowa drivers to ensure epson v370 support in sane  
 #newest drivers  
