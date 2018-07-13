@@ -1,14 +1,15 @@
+    #these instructions are for reference only. '1-env.sh' and '2-driver_installer.sh' automate this configuring the os and sane to work with multiple Epson v370 scanners. for any errors refer to the detailed steps and explanations below. confirmed to work on ubuntu server 18.04 LTS.
+
 1) install sane.  
 'sudo apt-get update & sudo apt-get upgrade -y'  
-'sudo apt-get install sane sane-utils libsane-extras'  
+'sudo apt-get install sane'  
 
 2) install epkowa drivers to ensure epson v370 support in sane  
 #newest drivers  
-http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX  
-#confirmed working legacy drivers  
-iscan_2.29.3-1~usb0.1.ltdl7_amd64.deb  
-iscan-data_1.26.0-1_all.deb  
-iscan-plugin-perfection-v370_1.0.0-2_amd64.deb  
+
+    #download_search: http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX  
+
+#confirmed working legacy drivers   
 
     #download link: https://goo.gl/tsnu23  
 
@@ -20,7 +21,9 @@ if given dependency error, run for each driver:
 3) run: 'sane-find-scanner'; if scanners are found, then they are sensed by the OS   
 #'scanimage -L' will not identify scanners until their drivers are configured. drivers allow sane to work with them  
 
-permissions issue - if 'sane-find-scanner' only runs when using sudo, follow guide at  https://help.ubuntu.com/community/SettingScannerPermissions  
+permissions issue - if 'sane-find-scanner' only runs when using sudo, follow guide at  
+
+    #read more: https://help.ubuntu.com/community/SettingScannerPermissions  
 
 4) add the driver to the list in /usr/local/etc/sane.d/dll.conf or /etc/sane.d/dll.conf: add the word 'epkowa' to the list  
 run: 'scanimage -L' ## may require reboot  
@@ -44,7 +47,9 @@ add the lines:
     #script takes care of creating symlinks for the epson scanners, so the below notes are simply fyi  
 
 udev intro for beginners:  
-http://www.dreamincode.net/forums/topic/20020-using-udev-to-manage-hardware-in-linux/  
+
+    #read here: http://www.dreamincode.net/forums/topic/20020-using-udev-to-manage-hardware-in-linux/  
+
 Notes:  
     /dev lists nodes representing attached hardware  
     /sys lists this same hardware, but contains extensive information about each unit  
