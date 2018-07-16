@@ -31,3 +31,8 @@ sudo chmod a+w /dev/bus/usb/*
 #creating symlinks for the scanners. formatted for UnixScanningManager script to work with scanners
 sudo echo 'ATTR{product}=="CanoScan",SYMLINK+="bus/usb/00%s{busnum}/NQBSCANNER%k"' > /etc/udev/rules.d/10-NQB.rules
 sudo echo 'ATTR{product}=="EPSON Perfection V37/V370", SYMLINK+="bus/usb/00%s{busnum}/NQBSCANNER%k"' >> /etc/udev/rules.d/10-NQB.rules
+
+#prevent usb autosuspend/sleep
+sudo sed -i '/GRUB_CMDLINE_LINUX_DEFAULT/d' /etc/default/grub
+sudo echo 'GRUB_CMDLINE_LINUX_DEFAULT="usbcore.autosuspend=-1"' >>  /etc/default/grub
+sudo update-grub
