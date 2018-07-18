@@ -4,7 +4,7 @@ set -e
 
 #install required packages
 sudo apt-get update & sudo apt-get upgrade -y
-sudo apt-get install sane gcc make zip -y
+sudo apt-get install sane gcc make zip ssmtp -y
 
 #configure scanner driver
 sudo echo 'epkowa' >> /etc/sane.d/dll.conf
