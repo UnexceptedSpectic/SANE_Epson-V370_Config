@@ -243,25 +243,41 @@ then
 		# scan using clear calibration for cannon scanners
 		if [[ $curr_name == *genesys:libusb* ]]
 		then
-			scan_result=$(scanimage -d $curr_name --resolution=300 --format=tiff --mode=Color --clear-calibration 2>&1 > $file_name )
+            scan_result=$(timeout -k 30 30 scanimage -d $curr_name --resolution=300 --format=tiff --mode=Color 2>&1 > $file_name)
 		else
-			scan_result=$(scanimage -d $curr_name --resolution=300 --format=tiff --mode=Color 2>&1 > $file_name )
+            scan_result=$(timeout -k 30 30 scanimage -d $curr_name --resolution=300 --format=tiff --mode=Color 2>&1 > $file_name)
 		fi
+        if [[ $? -eq 124 ]]; then
+            scan_result="failed because this is cancer"
+        fi
 
 		# Check if stderr returned something
-		if [ ! -z "$scan_result" ]; then
-
+		while [ ! -z "$scan_result" ]; do 
 			# Write to logfile
 			echo $(date +"%Y/%m/%d %H:%M:%S - ")$" - Error: "$scan_result >> $log_name
-
+            cd $PARENT
+            sudo $PARENT/scanner_reset.py
+            cd $DIRECTORY
+            sleep 15
+            rm $file_name
+            file_name=$FILE_PREFIX$"_"$curr_id$"_"$(date +"%Y%m%d_%H%M")$".tif"
+            scan_result=$(timeout -k 30 30 scanimage -d $curr_name --resolution=300 --format=tiff --mode=Color 2>&1 > $file_name)
+            if [[ $? -eq 124 ]]; then
+                scan_result="failed because this is cancer"
+            fi
 			# Send mails
-			for (( k=0; k<${mailLen}; k++));
-			do
-				curr_mail=${MAILS[$k]}
-				message="To: $curr_mail \nFrom:$curr_mail\nSubject:NQB - Scanning error\n\n"$scan_result$"\n"
-				echo -e $message | ssmtp -t 
-			done
-		fi
+			#for (( k=0; k<${mailLen}; k++));
+			#do
+			#	curr_mail=${MAILS[$k]}
+			#	message="To: $curr_mail \nFrom:$curr_mail\nSubject:NQB - Scanning error\n\n"$scan_result$"\n"
+			#	echo -e $message | ssmtp -t 
+            #done
+            if [  -z "$scan_result" ]; then
+                echo "Scan error fixed"
+                echo "Scan error fixed" >> $log_name
+            fi
+        done
+        
 		echo $(date +"%Y/%m/%d %H:%M:%S - ")$" - Background scanned for "$curr_name >> $log_name
 	done
 
@@ -305,25 +321,42 @@ then
 			# scan using clear calibration for cannon scanners
 			if [[ $curr_name == *genesys:libusb* ]]
 			then
-				scan_result=$(scanimage -d $curr_name --resolution=300 --format=tiff --mode=Color --clear-calibration 2>&1 > $file_name )
+                scan_result=$(timeout -k 30 30 scanimage -d $curr_name --resolution=300 --format=tiff --mode=Color 2>&1 > $file_name)
 			else
-				scan_result=$(scanimage -d $curr_name --resolution=300 --format=tiff --mode=Color 2>&1 > $file_name )
+                scan_result=$(timeout -k 30 30 scanimage -d $curr_name --resolution=300 --format=tiff --mode=Color 2>&1 > $file_name)
 			fi
+            if [[ $? -eq 124 ]]; then
+                scan_result="failed because this is cancer"
+            fi
 
-			# Check if stderr returned something
-			if [ ! -z "$scan_result" ]; then
-				# Write to logfile
-				echo $(date +"%Y/%m/%d %H:%M:%S - ")$" - Error: "$scan_result >> $log_name
-
-				# Send mails
-				for (( j=0; j<${mailLen}; j++));
-				do
-					curr_mail=${MAILS[$j]}
-					message="To: $curr_mail \nFrom:$curr_mail\nSubject:NQB - Scanning error\n\n"$scan_result$"\n"
-					echo -e $message | ssmtp -t 
-				done
-			fi
-			echo $(date +"%Y/%m/%d %H:%M:%S - ")$" - After scan no. $i/$NUMBER_OF_SCANS  for "$curr_name  >> $log_name
+		# Check if stderr returned something
+		while [ ! -z "$scan_result" ]; do
+			# Write to logfile
+			echo $(date +"%Y/%m/%d %H:%M:%S - ")$" - Error: "$scan_result >> $log_name
+            cd $PARENT
+            sudo $PARENT/scanner_reset.py
+            cd $DIRECTORY            
+            sleep 15
+            rm $file_name
+            file_name=$FILE_PREFIX$"_"$curr_id$"_"$(date +"%Y%m%d_%H%M")$".tif"
+            scan_result=$(timeout -k 30 30 scanimage -d $curr_name --resolution=300 --format=tiff --mode=Color 2>&1 > $file_name)
+            if [[ $? -eq 124 ]]; then
+                scan_result="failed because this is cancer"
+            fi
+			# Send mails
+			#for (( k=0; k<${mailLen}; k++));
+			#do
+			#	curr_mail=${MAILS[$k]}
+			#	message="To: $curr_mail \nFrom:$curr_mail\nSubject:NQB - Scanning error\n\n"$scan_result$"\n"
+			#	echo -e $message | ssmtp -t 
+            #done
+            if [ -z "$scan_result" ]; then
+                echo "Scan error fixed"
+                echo "Scan error fixed" >> $log_name
+            fi
+        done
+        
+		echo $(date +"%Y/%m/%d %H:%M:%S - ")$" - After scan no. $i/$NUMBER_OF_SCANS  for "$curr_name  >> $log_name
 		done
 
 		afterIt=$(date +%s)
