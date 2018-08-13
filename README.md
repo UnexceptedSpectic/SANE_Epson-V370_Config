@@ -1,6 +1,16 @@
-    #these instructions are for reference only. '1-env.sh' and '2-driver_installer.sh' automate this, configuring  
-    the os and sane to work with multiple Epson v370 scanners. for any errors refer to the detailed steps and  
-    explanations below. confirmed to work on ubuntu server 18.04 LTS.
+###Configuration 
+move to directory containing '1-env.sh' and '2-driver_installer.sh' and run:  
+    #sudo ./1-env.sh  
+    #sudo ./2-driver_installer.sh  
+    #sudo gcc -o usbreset usbreset.c  
+###Usage
+edit 'scan.cfg' for your needs, move to directory containing 'run_scan.sh', and run: 
+    #sudo ./run_scan.sh scan.cfg
+follow the script prompt to select desired scanner(s) and confirm job
+    
+---------------------------------------------------------------------------------------------------------------------------   
+    #The below instructions are for reference only. '1-env.sh' and '2-driver_installer.sh' automate this, configuring  
+    the OS and SANE to work with multiple Epson v370 scanners. For any errors, refer to this guide for troubleshooting. Confirmed to work on ubuntu server 18.04 LTS. 
 
 1) install sane.  
 'sudo apt-get update & sudo apt-get upgrade -y'  
