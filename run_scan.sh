@@ -255,9 +255,7 @@ then
 		while [ ! -z "$scan_result" ]; do 
 			# Write to logfile
 			echo $(date +"%Y/%m/%d %H:%M:%S - ")$" - Error: "$scan_result >> $log_name
-            cd $PARENT
             sudo $PARENT/scanner_reset.py
-            cd $DIRECTORY
             sleep 15
             rm $file_name
             file_name=$FILE_PREFIX$"_"$curr_id$"_"$(date +"%Y%m%d_%H%M")$".tif"
@@ -333,9 +331,7 @@ then
 		while [ ! -z "$scan_result" ]; do
 			# Write to logfile
 			echo $(date +"%Y/%m/%d %H:%M:%S - ")$" - Error: "$scan_result >> $log_name
-            cd $PARENT
             sudo $PARENT/scanner_reset.py
-            cd $DIRECTORY            
             sleep 15
             rm $file_name
             file_name=$FILE_PREFIX$"_"$curr_id$"_"$(date +"%Y%m%d_%H%M")$".tif"
