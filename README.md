@@ -4,9 +4,7 @@ move to directory containing '1-env.sh' and '2-driver_installer.sh' and run:
     `sudo ./2-driver_installer.sh`  
       
 Usage  
-[edit](https://github.com/UnexceptedSpectic/SANE_Epson-V370_Config/blob/master/scanning_manual.pdf) 'scan.cfg' for your needs, move to directory containing 'run_scan.sh', and run:   
-    `sudo ./run_scan.sh scan.cfg`  
-follow the script prompt to select desired scanner(s) and confirm job  
+the usage manual can be found [here](https://github.com/UnexceptedSpectic/SANE_Epson-V370_Config/blob/master/scanning_manual.pdf)   
     
 ---------------------------------------------------------------------------------------------------------------------------     
 *The below instructions are for reference only. '1-env.sh' and '2-driver_installer.sh' automate this, configuring the OS and SANE to work with multiple Epson v370 scanners. For any errors, refer to this guide for troubleshooting. Confirmed to work on ubuntu server 18.04 LTS. 
