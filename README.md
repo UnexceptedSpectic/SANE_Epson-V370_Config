@@ -7,20 +7,13 @@ Usage and Scanning Script Configuration
 the usage manual can be found [here](https://github.com/UnexceptedSpectic/SANE_Epson-V370_Config/blob/master/scanning_manual.pdf)   
     
 ---------------------------------------------------------------------------------------------------------------------------     
-*The below instructions are for reference only. '1-env.sh' and '2-driver_installer.sh' automate this, configuring the OS and SANE to work with multiple Epson v370 scanners. For any errors, refer to this guide for troubleshooting. Confirmed to work on ubuntu server 18.04 LTS. 
+*The below instructions are for reference only. [1-env.sh](https://github.com/UnexceptedSpectic/SANE_Epson-V370_Config/blob/master/1-env.sh) and [2-driver_installer.sh](https://github.com/UnexceptedSpectic/SANE_Epson-V370_Config/blob/master/2-driver_installer.sh) automate this, configuring the OS and SANE to work with multiple Epson v370 scanners. For any errors, refer to this guide for troubleshooting. Confirmed to work on ubuntu server 18.04 LTS. 
 
 1) install sane.  
 'sudo apt-get update & sudo apt-get upgrade -y'  
 'sudo apt-get install sane'  
 
-2) install epkowa drivers to ensure epson v370 support in sane  
-#newest drivers  
-
-    #download_search: http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX  
-
-#confirmed working legacy drivers   
-
-    #download link: https://goo.gl/tsnu23  
+2) install epkowa drivers to ensure epson v370 support in sane. search for newest drivers [here](http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX). confirmed working legacy drivers can be found [here](https://goo.gl/tsnu23)  
 
 install all .deb files with: 'dpgk -i ./*.deb'  
 if given dependency error, run for each driver:  
