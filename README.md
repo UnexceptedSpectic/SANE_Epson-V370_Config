@@ -23,9 +23,7 @@ if given dependency error, run for each driver:
 3) run: 'sane-find-scanner'; if scanners are found, then they are sensed by the OS   
 #'scanimage -L' will not identify scanners until their drivers are configured. drivers allow sane to work with them  
 
-permissions issue - if 'sane-find-scanner' only runs when using sudo, follow guide at  
-
-    #read more: https://help.ubuntu.com/community/SettingScannerPermissions  
+permissions issue - if 'sane-find-scanner' only runs when using sudo, follow guide [here](https://help.ubuntu.com/community/SettingScannerPermissions)  
 
 4) add the driver to the list in /usr/local/etc/sane.d/dll.conf or /etc/sane.d/dll.conf: add the word 'epkowa' to the list  
 run: 'scanimage -L' ## may require reboot  
@@ -35,7 +33,7 @@ run: 'scanimage -L' ## may require reboot
 -run: 'export SANE_DEBUG_DLL="128 scanimage -L"' and then 'scanimage -L' for verbose output showing which drivers sane is trying to load. Locate the output line where sane searches for epkowa. If it is unable to find/initialize its drivers, note the DIRECTORY in which it searches for them and create sym link to them using 'sudo ln -s TARGET SYMLINK', where TARGET == /usr/lib/sane/DRIVER and SYMLINK is DIRECTORY/DRIVER  
 #if installed drivers are not located in TARGET, run: 'sudo find / -iname '*libsane-epkowa*''  
 
--add usb to /etc/sane.d/epkowa.conf as described in https://help.ubuntu.com/community/sane in Installing your USB scanner  
+-add usb to /etc/sane.d/epkowa.conf as described [here](https://help.ubuntu.com/community/sane) in Installing your USB scanner  
 
 run 'man sane' and read problems section for further troubleshooting  
 
@@ -48,9 +46,7 @@ add the lines:
     
     #script takes care of creating symlinks for the epson scanners, so the below notes are simply fyi  
 
-udev intro for beginners:  
-
-    #read here: http://www.dreamincode.net/forums/topic/20020-using-udev-to-manage-hardware-in-linux/  
+udev intro for beginners can be found [here](http://www.dreamincode.net/forums/topic/20020-using-udev-to-manage-hardware-in-linux/)    
 
 Notes:  
     /dev lists nodes representing attached hardware  
