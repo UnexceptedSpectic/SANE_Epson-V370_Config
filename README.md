@@ -2,10 +2,9 @@ Configuration
 move to directory containing '1-env.sh' and '2-driver_installer.sh' and run:  
     `sudo ./1-env.sh`  
     `sudo ./2-driver_installer.sh`  
-    `sudo gcc -o usbreset usbreset.c`  
       
 Usage  
-edit 'scan.cfg' for your needs, move to directory containing 'run_scan.sh', and run:   
+[edit](https://github.com/UnexceptedSpectic/SANE_Epson-V370_Config/blob/master/scanning_manual.pdf) 'scan.cfg' for your needs, move to directory containing 'run_scan.sh', and run:   
     `sudo ./run_scan.sh scan.cfg`  
 follow the script prompt to select desired scanner(s) and confirm job  
     
