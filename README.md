@@ -1,9 +1,9 @@
-Configuration  
+Installation and System Configuration  
 move to directory containing '1-env.sh' and '2-driver_installer.sh' and run:  
     `sudo ./1-env.sh`  
     `sudo ./2-driver_installer.sh`  
       
-Usage  
+Usage and Scanning Script Configuration  
 the usage manual can be found [here](https://github.com/UnexceptedSpectic/SANE_Epson-V370_Config/blob/master/scanning_manual.pdf)   
     
 ---------------------------------------------------------------------------------------------------------------------------     
