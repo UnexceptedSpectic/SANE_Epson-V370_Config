@@ -1,4 +1,4 @@
-fork of [original project](https://github.com/nirda/UnixScanningManager)
+This is a fork of an abandoned [project](https://github.com/nirda/UnixScanningManager) that addresses scanner driver incompatibility issues and provides simple installation scripts that configure a working environment for scalable and automated scanning. 
 
 Installation and System Configuration  
 move to directory containing '1-env.sh' and '2-driver_installer.sh' and run:  
