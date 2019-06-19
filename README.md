@@ -1,3 +1,5 @@
+fork of [original project](https://github.com/nirda/UnixScanningManager)
+
 Installation and System Configuration  
 move to directory containing '1-env.sh' and '2-driver_installer.sh' and run:  
     `sudo ./1-env.sh`  
